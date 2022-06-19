@@ -14,12 +14,6 @@ import com.application.frostmyday.model.ItemDetailsRepository;
 @Service
 public class ItemDetailService {
 
-	/*
-	 * private List<ItemDetail> itemdetails = new ArrayList<>( Arrays.asList( new
-	 * ItemDetail(1,"IceCream", "Venila", "$45", "source image_1"), new
-	 * ItemDetail(2,"IceCream", "Red", "$50","source_image_2") ) );
-	 */
-
 
 	@Autowired
 	private ItemDetailsRepository itemDetailsRepository;
