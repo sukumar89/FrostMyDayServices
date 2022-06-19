@@ -12,9 +12,8 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RestController;
 
-import com.application.frostmyday.Service.ItemDetailService;
-import com.application.frostmyday.model.ItemDetail;
-
+import com.application.frostmyday.bl.ItemDetailService;
+import com.application.frostmyday.model.ItemDetails;
 
 @RestController
 @RequestMapping("/frostmyday")
@@ -22,31 +21,29 @@ public class Controller {
 	@Autowired
 	private ItemDetailService itemDetailsService;
 
-	@GetMapping("/itemdetails")
-	public List<ItemDetail> getItemDetails() {
-		return itemDetailsService.getItemDetails();
+	@GetMapping("/allitemdetails")
+	public List<ItemDetails> getAllItemDetails() {
+		return itemDetailsService.getAllItemDetails();
 	}
-	
+
 	@GetMapping("/itemdetails/{id}")
-	public Optional<ItemDetail> getItemDetail(@PathVariable Integer id ) {
-		return itemDetailsService.getItemDetail(id);
+	public Optional<ItemDetails> getItemDetails(@PathVariable Integer id) {
+		return itemDetailsService.getItemDetails(id);
 	}
-	
-	@RequestMapping(method=RequestMethod.POST, value="/itemdetails")
-	public void createItemDetail(@RequestBody ItemDetail itemdetail) {
-		itemDetailsService.createItemDetail(itemdetail);
+	//Add new Items
+	@RequestMapping(method = RequestMethod.POST, value = "/itemdetails")
+	public void createItemDetails(@RequestBody ItemDetails itemdetail) {
+		itemDetailsService.createItemDetails(itemdetail);
 	}
-	
-	@RequestMapping(method=RequestMethod.PUT, value="/itemdetails/{id}")
-	public void updateItemDetail(@PathVariable Integer id, @RequestBody ItemDetail itemdetail) {
-		itemDetailsService.updateItemDetail(id, itemdetail);
+	// Modify
+	@RequestMapping(method = RequestMethod.PUT, value = "/itemdetails/{id}")
+	public void updateItemDetails(@PathVariable Integer id, @RequestBody ItemDetails itemdetail) {
+		itemDetailsService.updateItemDetails(id, itemdetail);
 	}
-	
-	@RequestMapping(method=RequestMethod.DELETE, value="/itemdetails/{id}")
-	public void deleteItemDetail(@PathVariable Integer id) {
-		itemDetailsService.deleteItemDetail(id);
+
+	@RequestMapping(method = RequestMethod.DELETE, value = "/itemdetails/{id}")
+	public void deleteItemDetails(@PathVariable Integer id) {
+		itemDetailsService.deleteItemDetails(id);
 	}
-			
-		
 
 }
