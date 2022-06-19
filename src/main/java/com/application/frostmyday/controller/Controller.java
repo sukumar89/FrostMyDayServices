@@ -23,6 +23,7 @@ public class Controller {
 
 	@GetMapping("/allitemdetails")
 	public List<ItemDetails> getAllItemDetails() {
+		//Return records from DB
 		return itemDetailsService.getAllItemDetails();
 	}
 
