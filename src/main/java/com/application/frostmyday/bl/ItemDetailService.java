@@ -21,6 +21,7 @@ public class ItemDetailService {
 	public List<ItemDetails> getAllItemDetails() {
 		List<ItemDetails> itemdetails = new ArrayList<>();
 		itemDetailsRepository.findAll().forEach(itemdetails::add);
+		//System.out.println(itemdetails.get(0).);
 		return itemdetails;
 	}
 

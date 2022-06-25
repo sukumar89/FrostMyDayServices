@@ -1,5 +1,6 @@
 package com.application.frostmyday.controller;
 
+import java.util.Arrays;
 import java.util.List;
 import java.util.Optional;
 
@@ -11,6 +12,7 @@ import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.client.RestTemplate;
 
 import com.application.frostmyday.bl.ItemDetailService;
 import com.application.frostmyday.model.ItemDetails;
@@ -18,9 +20,18 @@ import com.application.frostmyday.model.ItemDetails;
 @RestController
 @RequestMapping("/frostmyday")
 public class Controller {
+	RestTemplate restTemplate = new RestTemplate();
+	
 	@Autowired
 	private ItemDetailService itemDetailsService;
 
+	@GetMapping("/location")
+		
+	public Object getLocation() {
+		String url = "https://api.zippopotam.us/us/30080";
+		Object object = restTemplate.getForObject(url, Object.class);
+		return object;
+	}
 	@GetMapping("/allitemdetails")
 	public List<ItemDetails> getAllItemDetails() {
 		//Return records from DB
